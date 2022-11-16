@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   RouterProvider
@@ -5,13 +6,12 @@ import {
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 
-// styling
+// styling & Components
 import './App.css';
-import CreateUserPage from "./CreateUser";
-import LoginPage from "./Login";
-import UserProfilePage from "./UserProfile";
+import CreateUserPage from "./pages/CreateUser";
+import LoginPage from "./pages/Login";
+import UserProfilePage from "./pages/UserProfile";
 import Header from "./components/Header";
-import { useEffect, useState } from "react";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -46,13 +46,15 @@ function App() {
   const [appInitialized, setAppInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInformation, setUserInformation] = useState([]);
-  // ensure app is initialized
+  const [userInformation, setUserInformation] = useState({});
+
+  // ensure app is initialized when ready
   useEffect(() => {
     //Initialize firebase
     initializeApp(firebaseConfig);
     setAppInitialized(true);
-  })
+  }, []);
+
   // check to see if user is logged in
   // user loads page, check their status
   // set state accordingly
@@ -62,13 +64,14 @@ function App() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // user is signed in
-          setUserInformation({});
+          setUserInformation(user);
           setIsLoggedIn(true);
         } else {
           // user is signed out
           setUserInformation({});
-          setIsLoggedIn({});
+          setIsLoggedIn(false);
         }
+        // whenever state changes setLoading to false
         setIsLoading(false);
       });
     }

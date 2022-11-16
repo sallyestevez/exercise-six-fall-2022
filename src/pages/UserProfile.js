@@ -2,10 +2,10 @@ import React from 'react';
 
 function UserProfilePage() {
     return (
-        <div>
-            <h1>Profile</h1>
+        <div className="PageWrapper">
+            <h1>User Profile</h1>
         </div>
-    )
+    );
 }
 
 export default UserProfilePage;
