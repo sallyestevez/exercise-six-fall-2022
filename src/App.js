@@ -23,30 +23,12 @@ const firebaseConfig = {
   appId: "1:530220437413:web:ea3ddd86e918b1801ce24c"
 };
 
-// goes to page based on the file path
-const router = createBrowserRouter([
-  {
-    // home page
-    path: "/",
-    element: <UserProfilePage />,
-  },
-  {
-    // login page
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    // create user page
-    path: "/create",
-    element: <CreateUserPage />,
-  },
-]);
-
 function App() {
   const [appInitialized, setAppInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInformation, setUserInformation] = useState({});
+
 
   // ensure app is initialized when ready
   useEffect(() => {
@@ -76,10 +58,36 @@ function App() {
       });
     }
   }, [appInitialized]);
+
+  console.log({userInformation});
+
+  // goes to page based on the file path
+  const router = createBrowserRouter([
+    {
+      // home page
+      path: "/",
+      element: <UserProfilePage />,
+    },
+    {
+      // login page
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      // create user page
+      path: "/create",
+      element: (
+        <CreateUserPage 
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUserInformation={setUserInformation}
+      />
+    ),
+    },
+  ]);
   
   return (
     <div className="App">
-      <Header />
       <RouterProvider router={router} />
     </div>
   );
