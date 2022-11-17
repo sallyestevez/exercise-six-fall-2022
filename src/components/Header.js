@@ -27,7 +27,7 @@ function Header( { setIsLoggedIn, setUserInformation}) {
                 <Link to="/create">
                     <p>Create User</p>
                 </Link>
-                <p onClick={logout()}>Log Out</p>
+                <p onClick={() => logout()}>Log Out</p>
             </nav>
         </header>
     );

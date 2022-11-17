@@ -14,7 +14,7 @@ function CreateUserPage( {setIsLoggedIn, setUserInformation }) {
             const email = e.currentTarget.email.value;
             const password = e.currentTarget.password.value;
 
-            console.log(email, password);
+            console.log({email, password});
 
             const auth = getAuth();
 
@@ -27,7 +27,7 @@ function CreateUserPage( {setIsLoggedIn, setUserInformation }) {
                         email: user.email,
                         displayName: user.displayName,
                         uid: user.uid,
-                        accessToken: user.accessToken
+                        accessToken: user.accessToken,
                     });
                     setErrors();
                 })
@@ -36,7 +36,6 @@ function CreateUserPage( {setIsLoggedIn, setUserInformation }) {
                     const errorMessage = error.message;
                     console.warn({error, errorCode, errorMessage });
                     setErrors(errorMessage);
-                    // ..
                 });
         },
         [setErrors, setIsLoggedIn, setUserInformation]

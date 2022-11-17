@@ -11,7 +11,6 @@ import './App.css';
 import CreateUserPage from "./pages/CreateUser";
 import LoginPage from "./pages/Login";
 import UserProfilePage from "./pages/UserProfile";
-import Header from "./components/Header";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -78,11 +77,11 @@ function App() {
       path: "/create",
       element: (
         <CreateUserPage 
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        setUserInformation={setUserInformation}
-      />
-    ),
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
+        />
+      ),
     },
   ]);
   
