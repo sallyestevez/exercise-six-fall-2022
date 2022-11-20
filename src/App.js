@@ -58,19 +58,33 @@ function App() {
     }
   }, [appInitialized]);
 
-  console.log({userInformation});
+  console.log({ userInformation });
 
   // goes to page based on the file path
   const router = createBrowserRouter([
     {
       // home page
       path: "/",
-      element: <UserProfilePage />,
+      element: (
+        <UserProfilePage 
+          isLoading={isLoading} 
+          isLoggedIn={isLoggedIn} 
+          userInformation={userInformation} 
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
+        />
+      ),
     },
     {
       // login page
       path: "/login",
-      element: <LoginPage />,
+      element: (
+        <LoginPage 
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
+        />
+      ),
     },
     {
       // create user page

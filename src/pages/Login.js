@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router';
-import { useEffect } from 'react';
 
-function LoginPage( {isLoggedIn}) {
+function LoginPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
     const navigate = useNavigate();
 
     // if logged in navigate to Home/User Profile
     useEffect(() => {
-        if(isLoggedIn) navigate("/");
+        if (isLoggedIn) navigate("/");
     }, [isLoggedIn]);
 
     return (
     <>
-        <Header />
+        <Header 
+            setIsLoggedIn={setIsLoggedIn} 
+            setUserInformation={setUserInformation}
+        />
         <div className="PageWrapper">
             <h1>Login</h1>
             <LoginForm />

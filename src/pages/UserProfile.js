@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router';
-import { useEffect } from 'react';
 
-function UserProfilePage({ isLoading, isLoggedIn, userInformation }) {
+function UserProfilePage({ isLoading, isLoggedIn, setIsLoggedIn, setUserInformation, userInformation }) {
     const navigate = useNavigate();
 
     // if not logged in & not loading navigate to login page
@@ -13,7 +12,10 @@ function UserProfilePage({ isLoading, isLoggedIn, userInformation }) {
 
     return (
         <>
-            <Header />
+            <Header 
+                setIsLoggedIn={setIsLoggedIn} 
+                setUserInformation={setUserInformation}
+            />
             <div className="PageWrapper">
                 <h1>User Profile</h1>
                 <p>
@@ -25,8 +27,8 @@ function UserProfilePage({ isLoading, isLoggedIn, userInformation }) {
                     {userInformation.email}
                 </p>
                 <p>
-                    <strong>User ID</strong>
-                    {userInformation.id}
+                    <strong>User ID: </strong>
+                    {userInformation.uid}
                 </p>
             </div>
         </>
