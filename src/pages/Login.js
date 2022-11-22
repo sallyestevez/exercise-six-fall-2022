@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import LoginForm from '../components/LoginForm';
 import Header from '../components/Header';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
     const navigate = useNavigate();

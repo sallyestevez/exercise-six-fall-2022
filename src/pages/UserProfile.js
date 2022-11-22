@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 function UserProfilePage({ isLoading, isLoggedIn, setIsLoggedIn, setUserInformation, userInformation }) {
     const navigate = useNavigate();
