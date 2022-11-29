@@ -11,7 +11,7 @@ function LoginPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
     // if logged in navigate to Home/User Profile
     useEffect(() => {
         if (isLoggedIn) navigate("/");
-    }, [isLoggedIn], navigate());
+    }, [isLoggedIn, navigate]);
 
     const loginUser = useCallback((e) => {
         e.preventDefault();
