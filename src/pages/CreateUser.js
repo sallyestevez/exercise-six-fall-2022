@@ -11,7 +11,7 @@ function CreateUserPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
     // if logged in navigate to Home/User Profile
     useEffect(() => {
         if (isLoggedIn) navigate("/");
-    }, [isLoggedIn]);
+    }, [isLoggedIn], navigate());
 
     const signUpUser = useCallback(
         // generic argument placeholder (element)
