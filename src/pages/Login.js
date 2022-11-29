@@ -40,9 +40,7 @@ function LoginPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
             setErrors(errorMessage);
         })
     }, [setIsLoggedIn, setUserInformation]);
-
-
-
+    
     return (
     <>
         <Header 
